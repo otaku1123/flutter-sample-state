@@ -1,4 +1,5 @@
-import 'package:flutter_state_notifier/flutter_state_notifier.dart';
+
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../state/my_home_state.dart';
 

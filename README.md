@@ -57,3 +57,9 @@ samples, guidance on mobile development, and a full API reference.
   - アクセスする範囲が限定されてしまう
 
 ## Riverpod
+
+- メリット
+  - グローバルな変数で、状態/ロジックにアクセスできる
+  - 状態 / 処理 / 見た目を分離できる。
+- デメリット
+  - どこからでもアクセスできるので、状態の管理の制約をかけることが難しくなる

@@ -1,17 +1,15 @@
-
 import 'package:flutter/material.dart';
-import 'package:flutter_state_notifier/flutter_state_notifier.dart';
-import 'package:provider/provider.dart';
-import 'package:state_management/state/my_home_state.dart';
-import 'package:state_management/view_model/my_home_view_model.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:state_management/main.dart';
+
 
 class MyHomePage extends StatelessWidget {
   const MyHomePage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return StateNotifierProvider<MyHomePageStateNotifier, MyHomePageState>(
-      create: (context) => MyHomePageStateNotifier(),
+    print('MyHomePage build() called');
+    return ProviderScope(
       child: Scaffold(
         appBar: AppBar(
           title: const Text('Providerパターン'),
@@ -43,15 +41,13 @@ class WidgetA extends StatelessWidget {
   }
 }
 
-class WidgetB extends StatelessWidget {
+class WidgetB extends ConsumerWidget {
   const WidgetB({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     print('WidgetB build() called');
-    final int counter = context.watch<MyHomePageState>().counter;
-
-    // selectでは、変更を監視するプロパティを指定できる
+    final int counter = ref.watch(myHomePageProvider).counter;
     // final int counter = context.select<MyHomePageState, int>((state) => state.counter);
     return Text(
       '$counter',
@@ -60,14 +56,15 @@ class WidgetB extends StatelessWidget {
   }
 }
 
-class WidgetC extends StatelessWidget {
+class WidgetC extends ConsumerWidget {
   const WidgetC({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     print('WidgetC build() called');
     // readでは、変更を監視しない（1回だけアクセスする）
-    final Function increment = context.read<MyHomePageStateNotifier>().increment;
+    final Function increment =
+        ref.read(myHomePageProvider.notifier).increment;
 
     return ElevatedButton(
       onPressed: () {
