@@ -48,3 +48,12 @@ samples, guidance on mobile development, and a full API reference.
 - デメリット
   - 子Widgetしかアクセスできない
 
+
+## StateNotifierProvider
+
+- メリット
+  - 状態 / 処理 / 見た目を分離できる。
+- デメリット
+  - アクセスする範囲が限定されてしまう
+
+## Riverpod
