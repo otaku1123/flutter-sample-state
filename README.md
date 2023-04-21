@@ -14,3 +14,10 @@ A few resources to get you started if this is your first Flutter project:
 For help getting started with Flutter development, view the
 [online documentation](https://docs.flutter.dev/), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
+
+## StatefulWidget
+
+- メリット
+  - 実装がシンプルなので、複雑な画面構成でなければ、分かりやすく実装できる。
+- デメリット
+  - 状態を渡すために、コンストラクタで渡す必要があり、画面が複雑だと、管理が難しくなる。
